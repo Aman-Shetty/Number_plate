@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detection Result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .result-img {
+            max-width: 400px;
+            margin: 20px auto;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Number Plate Detection Result</h1>
+        {% if plate %}
+        <p class="text-center">
+            <strong>Number Plate:</strong> {{ plate }}<br>
+            <strong>Registered State:</strong> {{ state }}<br>
+            <strong>Toll Charge:</strong> ₹{{ toll }}
+        </p>
+        <div class="text-center">
+            <img src="{{ url_for('uploaded_file', filename=image) }}" class="result-img" alt="Detected Image">
+        </div>
+        {% else %}
+        <p class="text-center text-danger">No valid number plate detected.</p>
+        {% endif %}
+        <div class="text-center mt-3">
+            <a href="/" class="btn btn-primary">Upload Another Image</a>
+        </div>
+    </div>
+</body>
+
+</html>
